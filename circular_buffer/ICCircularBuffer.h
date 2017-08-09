@@ -2,7 +2,7 @@
 #define __CIRCURLAR_BUFFER_H__
 #include <stdint.h>
 
-#define NEW_CircularBuffer(data, size) {data, data, data, size}
+#define ICCircularBufferCreateWithBuffer(data, size) {data, data, data, size}
 
 typedef struct {
     uint8_t *data;
@@ -10,9 +10,9 @@ typedef struct {
     uint8_t *tail;
     unsigned int size;
     unsigned int length; //content used
-} CircularBuffer;
+} ICCircularBuffer;
 
-uint8_t CircularBuffer_isFull(CircularBuffer *cb);
-void CircularBuffer_add(CircularBuffer *cb, uint8_t datum);
+uint8_t ICCircularBufferIsFull(ICCircularBuffer *cb);
+void ICCircularBufferAdd(ICCircularBuffer *cb, uint8_t datum);
 
 #endif

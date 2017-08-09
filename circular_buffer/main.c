@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "circular_buffer.h"
+#include "ICCircularBuffer.h"
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -8,15 +8,14 @@
 
 int main() {
     uint8_t data[CIRCULAR_BUFFER_SIZE];
-    CircularBuffer cb = NEW_CircularBuffer(data, CIRCULAR_BUFFER_SIZE);
+    ICCircularBuffer cb = ICCircularBufferCreateWithBuffer(data, CIRCULAR_BUFFER_SIZE);
     uint8_t randData = 0;
-    while(!CircularBuffer_isFull(&cb)) {
+    while(!ICCircularBufferIsFull(&cb)) {
         randData = rand();
-        CircularBuffer_add(&cb, 1);
-        //randData++;
+        ICCircularBufferAdd(&cb, 1);
         usleep(50000);
+	printf(".");
     }
-    //int *a = (int *) data;
     for(int i = 0; i < CIRCULAR_BUFFER_SIZE; ++i) {
         printf("%d - %X\n", i, data[i]);
     }

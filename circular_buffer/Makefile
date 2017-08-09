@@ -1,5 +1,5 @@
 BUILD_DIR=build
-SOURCES = main.c circular_buffer.c
+SOURCES = main.c ICCircularBuffer.c
 
 test: $(SOURCES:.c=.o)
 	$(CC) $^ -o $@

@@ -1,13 +1,9 @@
-hello:  main.c f1.o f2.o f3.o f4.o
+hello:  main.o f1.o f2.o f3.o f4.o
+	@echo 'CC = ' $(CC)
 	@echo '@ = ' $@
 	@echo '? = ' $?
-	$(CC) $? -o $@
-
-.c.o:
-	@echo '< = ' $<
-	@echo '*.c = ' $*.c
-	@echo '* = ' $*
-	$(CC) $(CFLAGS) -c $<
+	@echo $< , $^
+	$(CC) $^ -o $@
 
 clean:
-	$(RM) hello *.o 
+	$(RM) hello *.o

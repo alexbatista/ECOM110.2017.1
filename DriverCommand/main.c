@@ -60,10 +60,10 @@ int main() {
     ACCCommandExec(cmd);
     printf("Result: %d\n", cmd->data);
 
-
+#define TAP_REG_ARGS TAP_REG, Read, buffer, 4
 
     uint8_t buffer[4];
-    ICCommandSet(&cmd, TAP_REG, Read, &buffer);
+    ICCommandSet(&cmd, TAP_REG_ARGS);
 
 
 }
